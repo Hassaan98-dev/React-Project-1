@@ -1,0 +1,1255 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'roboto',sans-serif;
+}
+.Loader{
+  height:100vh;
+  width:100vw;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.wheel-and-hamster {
+  --dur: 1s;
+  position: relative;
+  width: 12em;
+  height: 12em;
+  font-size: 14px;
+}
+
+.wheel,
+.hamster,
+.hamster div,
+.spoke {
+  position: absolute;
+}
+
+.wheel,
+.spoke {
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wheel {
+  background: radial-gradient(100% 100% at center,hsla(0,0%,60%,0) 47.8%,hsl(0,0%,60%) 48%);
+  z-index: 2;
+}
+
+.hamster {
+  animation: hamster var(--dur) ease-in-out infinite;
+  top: 50%;
+  left: calc(50% - 3.5em);
+  width: 7em;
+  height: 3.75em;
+  transform: rotate(4deg) translate(-0.8em,1.85em);
+  transform-origin: 50% 0;
+  z-index: 1;
+}
+
+.hamster__head {
+  animation: hamsterHead var(--dur) ease-in-out infinite;
+  background: hsl(30,90%,55%);
+  border-radius: 70% 30% 0 100% / 40% 25% 25% 60%;
+  box-shadow: 0 -0.25em 0 hsl(30,90%,80%) inset,
+		0.75em -1.55em 0 hsl(30,90%,90%) inset;
+  top: 0;
+  left: -2em;
+  width: 2.75em;
+  height: 2.5em;
+  transform-origin: 100% 50%;
+}
+
+.hamster__ear {
+  animation: hamsterEar var(--dur) ease-in-out infinite;
+  background: hsl(0,90%,85%);
+  border-radius: 50%;
+  box-shadow: -0.25em 0 hsl(30,90%,55%) inset;
+  top: -0.25em;
+  right: -0.25em;
+  width: 0.75em;
+  height: 0.75em;
+  transform-origin: 50% 75%;
+}
+
+.hamster__eye {
+  animation: hamsterEye var(--dur) linear infinite;
+  background-color: hsl(0,0%,0%);
+  border-radius: 50%;
+  top: 0.375em;
+  left: 1.25em;
+  width: 0.5em;
+  height: 0.5em;
+}
+
+.hamster__nose {
+  background: hsl(0,90%,75%);
+  border-radius: 35% 65% 85% 15% / 70% 50% 50% 30%;
+  top: 0.75em;
+  left: 0;
+  width: 0.2em;
+  height: 0.25em;
+}
+
+.hamster__body {
+  animation: hamsterBody var(--dur) ease-in-out infinite;
+  background: hsl(30,90%,90%);
+  border-radius: 50% 30% 50% 30% / 15% 60% 40% 40%;
+  box-shadow: 0.1em 0.75em 0 hsl(30,90%,55%) inset,
+		0.15em -0.5em 0 hsl(30,90%,80%) inset;
+  top: 0.25em;
+  left: 2em;
+  width: 4.5em;
+  height: 3em;
+  transform-origin: 17% 50%;
+  transform-style: preserve-3d;
+}
+
+.hamster__limb--fr,
+.hamster__limb--fl {
+  clip-path: polygon(0 0,100% 0,70% 80%,60% 100%,0% 100%,40% 80%);
+  top: 2em;
+  left: 0.5em;
+  width: 1em;
+  height: 1.5em;
+  transform-origin: 50% 0;
+}
+
+.hamster__limb--fr {
+  animation: hamsterFRLimb var(--dur) linear infinite;
+  background: linear-gradient(hsl(30,90%,80%) 80%,hsl(0,90%,75%) 80%);
+  transform: rotate(15deg) translateZ(-1px);
+}
+
+.hamster__limb--fl {
+  animation: hamsterFLLimb var(--dur) linear infinite;
+  background: linear-gradient(hsl(30,90%,90%) 80%,hsl(0,90%,85%) 80%);
+  transform: rotate(15deg);
+}
+
+.hamster__limb--br,
+.hamster__limb--bl {
+  border-radius: 0.75em 0.75em 0 0;
+  clip-path: polygon(0 0,100% 0,100% 30%,70% 90%,70% 100%,30% 100%,40% 90%,0% 30%);
+  top: 1em;
+  left: 2.8em;
+  width: 1.5em;
+  height: 2.5em;
+  transform-origin: 50% 30%;
+}
+
+.hamster__limb--br {
+  animation: hamsterBRLimb var(--dur) linear infinite;
+  background: linear-gradient(hsl(30,90%,80%) 90%,hsl(0,90%,75%) 90%);
+  transform: rotate(-25deg) translateZ(-1px);
+}
+
+.hamster__limb--bl {
+  animation: hamsterBLLimb var(--dur) linear infinite;
+  background: linear-gradient(hsl(30,90%,90%) 90%,hsl(0,90%,85%) 90%);
+  transform: rotate(-25deg);
+}
+
+.hamster__tail {
+  animation: hamsterTail var(--dur) linear infinite;
+  background: hsl(0,90%,85%);
+  border-radius: 0.25em 50% 50% 0.25em;
+  box-shadow: 0 -0.2em 0 hsl(0,90%,75%) inset;
+  top: 1.5em;
+  right: -0.5em;
+  width: 1em;
+  height: 0.5em;
+  transform: rotate(30deg) translateZ(-1px);
+  transform-origin: 0.25em 0.25em;
+}
+
+.spoke {
+  animation: spoke var(--dur) linear infinite;
+  background: radial-gradient(100% 100% at center,hsl(0,0%,60%) 4.8%,hsla(0,0%,60%,0) 5%),
+		linear-gradient(hsla(0,0%,55%,0) 46.9%,hsl(0,0%,65%) 47% 52.9%,hsla(0,0%,65%,0) 53%) 50% 50% / 99% 99% no-repeat;
+}
+
+/* Animations */
+@keyframes hamster {
+  from, to {
+    transform: rotate(4deg) translate(-0.8em,1.85em);
+  }
+
+  50% {
+    transform: rotate(0) translate(-0.8em,1.85em);
+  }
+}
+
+@keyframes hamsterHead {
+  from, 25%, 50%, 75%, to {
+    transform: rotate(0);
+  }
+
+  12.5%, 37.5%, 62.5%, 87.5% {
+    transform: rotate(8deg);
+  }
+}
+
+@keyframes hamsterEye {
+  from, 90%, to {
+    transform: scaleY(1);
+  }
+
+  95% {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes hamsterEar {
+  from, 25%, 50%, 75%, to {
+    transform: rotate(0);
+  }
+
+  12.5%, 37.5%, 62.5%, 87.5% {
+    transform: rotate(12deg);
+  }
+}
+
+@keyframes hamsterBody {
+  from, 25%, 50%, 75%, to {
+    transform: rotate(0);
+  }
+
+  12.5%, 37.5%, 62.5%, 87.5% {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes hamsterFRLimb {
+  from, 25%, 50%, 75%, to {
+    transform: rotate(50deg) translateZ(-1px);
+  }
+
+  12.5%, 37.5%, 62.5%, 87.5% {
+    transform: rotate(-30deg) translateZ(-1px);
+  }
+}
+
+@keyframes hamsterFLLimb {
+  from, 25%, 50%, 75%, to {
+    transform: rotate(-30deg);
+  }
+
+  12.5%, 37.5%, 62.5%, 87.5% {
+    transform: rotate(50deg);
+  }
+}
+
+@keyframes hamsterBRLimb {
+  from, 25%, 50%, 75%, to {
+    transform: rotate(-60deg) translateZ(-1px);
+  }
+
+  12.5%, 37.5%, 62.5%, 87.5% {
+    transform: rotate(20deg) translateZ(-1px);
+  }
+}
+
+@keyframes hamsterBLLimb {
+  from, 25%, 50%, 75%, to {
+    transform: rotate(20deg);
+  }
+
+  12.5%, 37.5%, 62.5%, 87.5% {
+    transform: rotate(-60deg);
+  }
+}
+
+@keyframes hamsterTail {
+  from, 25%, 50%, 75%, to {
+    transform: rotate(30deg) translateZ(-1px);
+  }
+
+  12.5%, 37.5%, 62.5%, 87.5% {
+    transform: rotate(10deg) translateZ(-1px);
+  }
+}
+
+@keyframes spoke {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(-1turn);
+  }
+}
+.error{
+  color:rgb(182, 48, 48);
+  text-shadow:1px 1px 5px crimson;
+  font-size:1rem;
+  margin:.5rem 0;
+}
+
+
+.active{
+  color:'crimson';
+}
+html,body{
+  overflow-x:hidden;
+}
+.container{
+height:100vh;
+width:50vw;
+}
+.phone-code-div{
+  display:flex;
+  flex-direction:column;
+  gap:.5rem
+}
+nav{
+  height:6rem;
+  width:98.8vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 2rem;
+  background-color:rgba(91, 139, 243, 0.1);
+  backdrop-filter:blur(30px);
+  position:fixed;
+  z-index:1;
+}
+.earth{
+  height:3rem;
+  width:3rem;
+  display:none;
+}
+nav h1{
+  font-size:1.5rem;
+}
+.nav-earth{
+  height:4rem;
+  width:4rem;
+}
+.nav-content{
+display:flex;
+gap:1rem;
+}
+.menu-bar{
+  font-size:0rem;
+  margin:0 1rem;
+  visibility:none;
+}
+.x-mark{
+  font-size:1.7rem;
+  display:none;
+}
+
+.Header-links{
+  font-size:1.5rem;
+  margin:.8rem 0;
+  text-decoration:none;
+}
+.Header-links-active{
+  font-size:1.5rem;
+  margin:.8rem 0;
+  color:crimson;
+  text-decoration:none;
+}
+
+.main-Content{
+  display:flex;
+  background-color: #adc0f7;
+  width:100%;
+  height:80%;
+  align-items:center;
+}
+.main-Content-info{
+  padding:5rem 3rem;
+  display:flex;
+  flex-direction:column;
+
+}
+.main-Content-img img{
+  height:70vh;
+  width:45vw;
+  margin:3rem 0;
+}
+.main-Content-h1{
+  font-size:3rem;
+  margin:3.5rem 0;
+}
+.main-Content-p{
+  line-height:1.7rem;
+  font-size:1.2rem;
+}
+.main-Content-btn{
+  height:3.5rem;
+  width:15rem;
+  border:none;
+  border-radius:5px;
+  display:grid;
+  place-items:center;
+  margin:4rem 0;
+  text-decoration:none;
+}
+.nav-content{
+  display:flex;
+  align-items:center;
+}
+.quran-Education{
+  display:flex;
+  flex-direction:row;
+  padding:5rem 5rem;
+}
+.quran-Education img{
+height:30rem;
+width:25rem;
+
+}
+.quran-education-content{
+  padding:0 5rem;
+  display:flex;
+  flex-direction:column;
+}
+.quran-education-content-h3{
+  font-size:3rem;
+  font-weight:400;
+}
+.quran-education-content p{
+  margin:.5rem 0;
+  font-size:1rem;
+  line-height:1.8rem;
+}
+.quran-education-content span{
+  margin:.5rem 0;
+  font-size:1rem;
+  line-height:2rem;
+}
+.quran-education-content i{
+  color:green;
+  margin:0 .5rem;
+}
+.Home-section-3{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:3rem;
+  height:70vh;
+  width:98.9vw;
+  padding:2rem 3rem;
+}
+.Home-div{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+.home-i{
+  font-size:3rem;
+  border-radius:50%;
+  padding:1rem 1rem;
+  margin:1rem 5rem;
+}
+.Home-div-h3{
+  font-size:2rem;
+  margin:1rem;
+}
+.Home-div-p{
+  font-size:1.2rem;
+  line-height:1.4rem;
+}
+.Home-div-2{
+  display:flex;
+  flex-direction:row;
+  height:100vh;
+  width:98.9vw;
+  align-items:center;
+}
+.Home-div-Content-1{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:2rem 2rem;
+}
+.Home-div-Content-2{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  padding:2rem 2rem;
+}
+.Home-div-Content-info{
+  display:flex;
+  flex-direction:column;
+}
+.Home-div-Content-info h4{
+  font-size:1.5rem;
+}
+.Home-div-Content-info h4 i{
+  font-size:2rem;
+  padding:.5rem .5rem;
+  border-radius:50%;
+  color:crimson;
+  margin:0 .5rem;
+  background-color: #1E2845;
+}
+.Home-div-Content-info p{
+  font-size:1rem;
+  line-height:1.4rem;
+}
+.contact-section{
+  height:50vh;
+  width:98.9vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+.contact-div{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.contact-div h3{
+  text-align:center;
+  font-size:2.5rem;
+  margin:2rem 0;
+}
+.contact-section-i-div{
+  display:flex;
+  height:20vh;
+  width:98.9vw;
+  justify-content:center;
+  align-items:center;
+  gap:4rem;
+}
+.contact-section-i-div i{
+  font-size:2rem;
+  padding:1rem 1.2rem;
+  border-radius:50%;
+  color:white;
+  background-color: #1E2845;
+  animation:bordercolor 10s infinite ;
+}
+.contact-section-i-div i:hover{
+  transform:scale(1.2);
+}
+
+.form-section{
+  display:flex;
+  height:fit-content;
+  align-items:center;
+  justify-content:center;
+  width:100vw;
+  flex-direction:column-reverse;
+  align-items:center;
+  padding:4rem 3rem;
+  z-index:100;
+}
+.earth-container{
+height:40vh;
+margin:0 0 5rem 0;
+width:vw;
+}
+.form-container {
+  width: 50vw;
+  background: linear-gradient(#212121, #212121) padding-box,
+              linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+  border: 4px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.form-container button:active {
+  scale: 0.95;
+}
+
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #717171;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-container .form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  background-color: transparent;
+  border: 3px solid #414141;
+}
+.form-container .form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color:crimson;
+  font-family: inherit;
+  background-color: transparent;
+  border: 3px solid #414141;
+}
+
+.form-container .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  resize: none;
+  color: #fff;
+  height: 96px;
+  border: 3px solid #414141;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.form-container .form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-group textarea:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: flex-start;
+  font-family: inherit;
+  color: #717171;
+  font-weight: 600;
+  width: 40%;
+  background: #313131;
+  border: 3px solid #414141;
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+.courses-section{
+  height:fit-content;
+  width:100vw;
+  position: relative;
+}
+.courses-div{
+  display:flex;
+  flex-wrap:wrap;
+  gap:3rem;
+  justify-content:center;
+  padding:2rem 0;
+}
+
+.course-div{
+  display:flex;
+  width:25vw;
+  height:60vh;
+  justify-content:center;
+  align-items:center;
+  border-radius:5px;
+  flex-direction:column;
+  background-color: rgba(195, 204, 231,0.1);
+  backdrop-filter:blur(5px);
+  gap:1rem;
+}
+.course-div h3{
+  font-size:1.2rem;
+  margin:.5rem 1rem;
+}
+.course-link{
+  height:3.5rem;
+  width:7rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  border-radius:4px;
+  font-size:1rem;
+}
+.course-div img{
+  width:100%;
+  height:60%;
+  border-radius:5px 5px 0 0;
+}
+.course-div p{
+  margin:.5rem 1rem;
+  font-size:1rem;
+}
+
+
+.accordian-title{
+  border:2px solid black;
+  padding:.5rem 0;
+  font-size:1rem;
+}
+.accordian-content{
+  max-height:0;
+  transition:max-height 3s ease-in-out;
+  overflow:hidden;
+  border-radius:0 5px;
+}
+.accordian-content p{
+  margin:2rem 0;
+  
+}
+.accordian-hide{
+  max-height:0;
+}
+.accordian-show{
+  max-height:fit-content;
+}
+.fee-section{
+  height:130vh;
+  width:100vw;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:2rem 0;
+  gap:.5rem;
+}
+.fee-section button{
+  background-color: #072F60;
+  color:#adc0f7;
+  font-size:1.2rem;
+  border:none;
+  padding:1.2rem 2rem;
+  margin:1rem 0;
+  border-radius:5px;
+}
+.monthly-fee h5{
+  font-size:2rem;
+  margin:2rem 0;
+  text-align:center;
+}
+.monthly-fee p{
+  font-size:1.2rem;
+}
+.fee-discount h5{
+  font-size:1.3rem;
+  margin:.5rem 0;
+}
+.fee-discount p{
+  font-size:1.2rem;
+  line-height:1.5rem;
+}
+.monthly-plan h5{
+  font-size:1.3rem;
+  margin:.5rem 0;
+}
+.monthly-plan p{
+  font-size:1.2rem;
+  line-height:1.5rem;
+}
+table {
+  height:35vh;
+  width:100vw;
+  margin:1rem 0;
+}
+td{
+  border-bottom:2px solid black;
+  padding:0 1rem;
+
+}
+th{
+  border-top:2px solid black;
+  background-color: #1E2845;
+  color:#adc0f7
+}
+tr:nth-child(even){
+  background-color: #adc0f7;
+  color:#072F60;
+}
+.footer{
+  padding:30px 0px;
+  font-family: 'Play', sans-serif;
+  text-align:center;
+  }
+  
+  .footer .row{
+  width:100%;
+  margin:1% 0%;
+  padding:0.6% 0%;
+  color:gray;
+  font-size:0.8em;
+  }
+  
+  .footer .row a{
+  text-decoration:none;
+  color:gray;
+  transition:0.5s;
+  }
+  
+  .footer .row a:hover{
+  color:#fff;
+  }
+  
+  .footer .row ul{
+  width:100%;
+  }
+  
+  .footer .row ul li{
+  display:inline-block;
+  margin:0px 30px;
+  }
+  
+  .footer .row a i{
+  font-size:2em;
+  margin:0% 1%;
+  }
+@media(max-width:1500px){
+ 
+  .main-Content-h1{
+    font-size:2.5rem;
+    margin:3rem 0;
+  }
+  .main-Content-p{
+    line-height:1.5rem;
+    font-size:1.2rem;
+  }
+  .main-Content-btn{
+    padding:1rem 1.5rem;
+    margin:3rem 0;
+  }
+  .main-Content-img img{
+    height:65vh;
+    width:50vw;
+  }
+  .quran-Education{
+    padding:4rem 4rem;
+  }
+  .quran-Education img{
+  height:30rem;
+  width:30rem;
+  
+  }
+  .quran-education-content{
+    padding:0 4rem;
+  }
+  .quran-education-content-h3{
+    font-size:2.5rem;
+    font-weight:400;
+    color:#072F60
+  }
+  .quran-education-content p{
+    margin:.4rem 0;
+    font-size:.8rem;
+    line-height:1.5rem;
+  }
+  .quran-education-content span{
+    margin:.4rem 0;
+    font-size:.9rem;
+    line-height:1.5rem;
+  }
+  .quran-education-content i{
+    margin:0 .4rem;
+  }
+  .Home-section-3{
+    padding:2rem 3.5rem;
+  }
+  .Home-div{
+    gap:1.5rem;
+  }
+  .home-i{
+    font-size:3rem;
+    border-radius:50%;
+    padding:1rem 1rem;
+    margin:1rem 6rem;
+  }
+  .Home-div-h3{
+    font-size:1.5rem;
+    margin:1rem;
+  }
+  .Home-div-p{
+    font-size:1.2rem;
+    line-height:1.6rem;
+  }
+}
+@media(max-width:1200px){
+.main-Content-h1{
+  font-size:2.2rem;
+  margin:3rem 0;
+}
+.main-Content-p{
+  line-height:1.3rem;
+  font-size:1rem;
+}
+.main-Content-btn{
+  padding:.9rem 1.2rem;
+  margin:3rem 0;
+}
+.main-Content-img img{
+  height:70vh;
+  width:60vw;
+}
+.quran-Education{
+  display:flex;
+  align-items:center;
+}
+.quran-education-content{
+  padding:6rem 2rem;
+}
+.quran-education-content-h3{
+  font-size:2rem;
+  font-weight:400;
+  color:#072F60;
+  margin:2rem 0;
+}
+.quran-education-content p{
+  margin:.3rem 0;
+  font-size:.9rem;
+  line-height:1.5rem;
+}
+.quran-education-content span{
+  margin:.3rem 0;
+  font-size:.7rem;
+  line-height:1.5rem;
+}
+.quran-education-content i{
+  margin:0 .3rem;
+}
+.Home-section-3{
+  padding:2rem 4rem;
+}
+.Home-div{
+  gap:1.5rem;
+}
+.home-i{
+  font-size:2.5rem;
+  border-radius:50%;
+  margin:1rem 6rem;
+}
+.Home-div-h3{
+  font-size:1.5rem;
+  margin:.8rem;
+}
+.Home-div-p{
+  font-size:1rem;
+  line-height:1.4rem;
+}
+}
+@media (max-width:768px) {
+  .nav-content{
+    display:flex;
+    flex-direction:column;
+    max-height:0;
+    width:15rem;
+    visibility: hidden;
+    justify-content:flex-start;
+    padding:5rem 0rem;
+    gap:2rem;
+    background-color: rgba(14, 30, 66, 0.1);
+    backdrop-filter:blur(10px);
+    z-index:1;
+    transition:max-height 0.3s  ease-in-out;
+    border-radius:5px;
+    overflow:hidden;
+    position: absolute;
+    top:0;
+    right:0;
+    }
+    nav{
+      width:100vw;
+    }
+    .container{
+      height:50vh;
+      width:100vw;
+      }
+    .menu-bar{
+      font-size:1.7rem;
+      display:block
+    }
+    .x-mark{
+      display:block;
+    }
+    .nav-earth{
+      display:none;
+    }
+    .earth{
+      display:block;
+    }
+  .main-Content{
+    display:flex;
+    height:fit-content;
+    overflow:hidden;
+    width:100vw;
+    align-items:center;
+    background-color: #adc0f7;
+    flex-direction: column;
+  }
+  .main-Content-info{
+    padding:5rem 3rem;
+  
+  }
+  .main-Content-img img{
+    height:fit-content;
+    width:50vw;
+    margin:4rem 0 0 0;
+  }
+  .main-Content-h1{
+    font-size:2rem;
+    margin:0 0;
+  }
+  .main-Content-p{
+    line-height:1.5rem;
+    font-size:.9rem;
+  }
+  .main-Content-btn{
+    padding:1rem 1.6rem;
+    margin:3rem 0;
+  }
+  .quran-Education{
+    width:100vw;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .quran-3d{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .quran-education-content{
+    padding:0 0;
+  }
+  .quran-education-content-h3{
+    font-size:1.8rem;
+    font-weight:500;
+    color:#072F60;
+  }
+  .quran-education-content p{
+    margin:.4rem 0;
+    font-size:.8rem;
+    line-height:1.2rem;
+  }
+  .quran-education-content span{
+    margin:.2rem 0;
+    font-size:.8rem;
+    line-height:.8rem;
+  }
+  .quran-education-content i{
+    margin:0 .3rem;
+  }
+  .quran-Education img{
+    height:15rem;
+    width:15rem;
+    margin:3rem 0;
+    }
+    .Home-section-3{
+      padding:8rem 1rem;
+      flex-direction:column;
+      height:fit-content;
+      width:100vw;
+      gap:1rem;
+    }
+    .Home-div{
+      gap:.5rem;
+    }
+    .home-i{
+      font-size:2rem;
+      border-radius:50%;
+      margin:0 1rem;
+    }
+    .Home-div-h3{
+      font-size:2rem;
+      margin:.8rem;
+    }
+    .Home-div-p{
+      font-size:1rem;
+      line-height:1.4rem;
+    }
+    .Home-div-2{
+      padding:10rem 0rem;
+      flex-direction:column;
+      height:fit-content;
+      width:100vw;
+    }
+    .Home-div-Content-1{
+      padding:2rem 1rem;
+    }
+    .Home-div-Content-2{
+      gap:1.4rem;
+      padding:2rem 1rem;
+    }
+    .Home-div-Content-info{
+      display:flex;
+      flex-direction:column;
+    }
+    .Home-div-Content-info h4{
+      font-size:1.5rem;
+    }
+    .Home-div-Content-info h4 i{
+      font-size:2rem;
+      padding:.5rem .5rem;
+      border-radius:50%;
+      color:crimson;
+      margin:0 .5rem;
+      background-color: #1E2845;
+    }
+    .Home-div-Content-info p{
+      font-size:1rem;
+      line-height:1.4rem;
+    }
+    .contact-section{
+      height:20vh;
+      width:100vw;
+    }
+    .contact-section-i-div{
+      height:15vh;
+      width:100vw;
+      gap:3rem;
+    }
+    .contact-section-i-div i{
+      font-size:1.2rem;
+      padding:.8rem 1rem;
+    }
+    .form-section{
+      display:flex;
+      flex-direction:column-reverse;
+      height:fit-content;
+      justify-content:center;
+      width:100vw;
+      align-items:center;
+      padding:4rem 3rem;
+    }
+    .earth-container{
+      height:25vh;
+      margin:0 0 0 2rem;
+      justify-content:center;
+      width:50vw;
+    }
+      .form-container {
+        width: 90vw;
+        height:fit-content;
+      }
+      .courses-section{
+        height:fit-content;
+        width:100vw;
+        gap:2.5rem;
+        justify-content:center;
+        padding:3rem 0;
+      }
+      .course-div{
+        width:70vw;
+        height:fit-content;
+        gap:.7rem;
+      }
+      .course-div h3{
+        font-size:1rem;
+        margin:.2rem 1rem;
+      }
+      .course-link{
+        padding:0 0;
+        height:calc(fit-content);
+        width:5rem;
+        flex-wrap: nowrap;
+        border-radius:4px;
+        font-size:.7rem;
+        justify-content:center;
+        font-size: 1rem;
+        margin-bottom:1rem;
+      }
+      .course-div img{
+        width:100%;
+        height:50%;
+        border-radius:5px 5px 0 0;
+      }
+      .course-div p{
+        margin:.3rem 1rem;
+        font-size:.8rem;
+      }
+      .fee-section{
+        height:fit-content;
+      }
+      table {
+        height:fit-content;
+        width:100vw;
+        border:none;
+        margin:1rem 0;
+      }
+      td{
+        border-bottom:2px solid black;
+        padding:.5rem 1rem;
+        font-size:.8rem;
+      
+      }
+      th{
+        font-size:.7rem;
+        padding:.9rem 0;
+      }
+
+      .fee-section button{
+        font-size:1rem;
+        padding:1rem 1rem;
+        margin:1rem 1rem;
+      }
+      .monthly-fee{
+        padding:0 1.5rem;
+      }
+      .fee-discount{
+        padding:0 1.5rem;
+      }
+      .monthly-plan{
+        padding:0 1.5rem;
+      }
+      .footer{
+        text-align:left;
+        padding:5%;
+        }
+        .footer .row ul li{
+        display:block;
+        margin:10px 0px;
+        text-align:left;
+        }
+        .footer .row a i{
+        margin:0% 3%;
+        }
+      
+}
+.hide{
+  display:none;
+}
+.nav-hide{
+  max-height:0;
+
+}
+.nav-show{
+  max-height:30rem;
+  visibility:visible;
+  width:18rem;
+  overflow:visible;
+}
+.show{
+  display:flex;
+}
+html,body{
+  overflow-x:hidden;
+}
